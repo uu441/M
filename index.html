@@ -1,13 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl" lang="ar">
 <head>
-    <title>بوت التداول</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوت التداول للإطارات الزمنية القصيرة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .signal {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .buy {
+            background-color: rgba(0, 128, 0, 0.1);
+            border-left: 5px solid green;
+        }
+        .sell {
+            background-color: rgba(255, 0, 0, 0.1);
+            border-left: 5px solid red;
+        }
+        .wait {
+            background-color: rgba(255, 165, 0, 0.1);
+            border-left: 5px solid orange;
+        }
+    </style>
 </head>
 <body>
-    <h1>بوت التداول للإطارات الزمنية القصيرة</h1>
-    <div id="results"></div>
-    
-    <!-- تضمين ملف JavaScript -->
+    <div class="container">
+        <h1>بوت التداول للإطارات الزمنية القصيرة</h1>
+        
+        <div class="form-group">
+            <label for="timeframe">الإطار الزمني:</label>
+            <select id="timeframe">
+                <option value="1m">دقيقة واحدة</option>
+                <option value="5m">5 دقائق</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="rsiPeriod">فترة مؤشر RSI:</label>
+            <input type="number" id="rsiPeriod" value="14" min="1">
+        </div>
+        
+        <div class="form-group">
+            <label for="rsiOverbought">مستوى ذروة الشراء (RSI):</label>
+            <input type="number" id="rsiOverbought" value="70" min="1" max="100">
+        </div>
+        
+        <div class="form-group">
+            <label for="rsiOversold">مستوى ذروة البيع (RSI):</label>
+            <input type="number" id="rsiOversold" value="30" min="1" max="100">
+        </div>
+        
+        <button id="startDemo">تشغيل العرض التوضيحي</button>
+        
+        <div class="results" id="results">
+            <h2>نتائج التحليل</h2>
+            <div id="signals"></div>
+        </div>
+    </div>
+
+    <!-- تضمين ملفات JavaScript -->
     <script src="trading-bot.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
